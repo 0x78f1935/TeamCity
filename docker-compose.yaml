@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  backend:
+    container_name: teamcity-server-instance
+    image: jetbrains/teamcity-server
+    user: root
+    volumes:
+      - /datadir:/data/teamcity_server/datadir
+      - /logs:/opt/teamcity/log
+    ports:
+      - 3333:8111
+    networks:
+      - teamcitynetwork
+    restart: on-failure
+
+networks:
+  teamcitynetwork:
